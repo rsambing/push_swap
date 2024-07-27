@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsambing <rsambing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 14:04:06 by rsambing          #+#    #+#             */
-/*   Updated: 2024/07/27 14:11:43 by rsambing         ###   ########.fr       */
+/*   Updated: 2024/07/27 14:58:12 by rsambing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,37 @@ int	ft_i_pilha(t_pilha *p, int n)
 		aux = aux->ant;
 	}
 	return (-1);
+}
+
+int	count_pilha(t_pilha *p)
+{
+	int		i;
+	t_lista	*aux;
+
+	i = 0;
+	aux = p->topo;
+	while (aux != NULL)
+	{
+		i++;
+		aux = aux->ant;
+	}
+	return (i);
+}
+
+int	check_pilha(t_pilha *p, int len)
+{
+	int		i;
+	t_lista	*aux;
+
+	if (!p)
+		return (0);
+	aux = p->topo;
+	i = -1;
+	while (++i < len - 1)
+	{
+		if (aux->valor > aux->ant->valor)
+			return (0);
+		aux = aux->ant;
+	}
+	return (1);
 }

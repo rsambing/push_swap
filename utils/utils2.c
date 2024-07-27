@@ -1,64 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsambing <rsambing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 14:04:06 by rsambing          #+#    #+#             */
-/*   Updated: 2024/07/27 14:11:49 by rsambing         ###   ########.fr       */
+/*   Updated: 2024/07/27 14:58:55 by rsambing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
-int	check_pilha(t_pilha *p, int len)
-{
-	int		i;
-	t_lista	*aux;
-
-	if (!p)
-		return (0);
-	aux = p->topo;
-	i = -1;
-	while (++i < len - 1)
-	{
-		if (aux->valor > aux->ant->valor)
-			return (0);
-		aux = aux->ant;
-	}
-	return (1);
-}
-
-int	count_pilha(t_pilha *p)
-{
-	int		i;
-	t_lista	*aux;
-
-	i = 0;
-	aux = p->topo;
-	while (aux != NULL)
-	{
-		i++;
-		aux = aux->ant;
-	}
-	return (i);
-}
 static void	liberar_concat(char *saida, char *temp)
 {
 	free(saida);
 	free(temp);
 }
 
+static int	a(char *saida)
+{
+	if (saida)
+		return (ft_strlen(saida));
+	return (0);
+}
+
+static int	b( char *temp)
+{
+	if (temp)
+		return (ft_strlen(temp));
+	return (0);
+}
+
 char	*concatena_strings(char *saida, char *temp)
 {
-	char *nova_saida;
-	size_t tamanho_saida;
-	size_t tamanho_temp;
+	char	*nova_saida;
+	size_t	tamanho_saida;
+	size_t	tamanho_temp;
 
-	tamanho_saida = saida ? ft_strlen(saida) : 0;
-	tamanho_temp = temp ? ft_strlen(temp) : 0;
+	tamanho_saida = a(saida);
+	tamanho_temp = b(temp);
 	if (!saida)
 	{
 		nova_saida = ft_strdup(temp);
