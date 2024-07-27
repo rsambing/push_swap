@@ -6,29 +6,14 @@
 /*   By: rsambing <rsambing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 08:27:04 by rsambing          #+#    #+#             */
-/*   Updated: 2024/07/27 08:20:55 by rsambing         ###   ########.fr       */
+/*   Updated: 2024/07/27 14:18:40 by rsambing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
-int	count_pilha(t_pilha *p)
-{
-	int		i;
-	t_lista	*aux;
-
-	i = 0;
-	aux = p->topo;
-	while (aux != NULL)
-	{
-		i++;
-		aux = aux->ant;
-	}
-	return (i);
-}
-
-char	*ordernar_3(t_pilha *p, int len)
+char	*ordenar_3(t_pilha *p, int len)
 {
 	char	*saida;
 	char	*nova_saida;
@@ -52,5 +37,62 @@ char	*ordernar_3(t_pilha *p, int len)
 		free(temp);
 		free(nova_saida);
 	}
+	return (saida);
+}
+
+static char *deixar_3(t_pilha *a, t_pilha *b, int len)
+{
+    char *saida;
+    char *temp;
+
+    (void)len;
+    saida = NULL;
+    temp = NULL;
+    while (count_pilha(a) != 3)
+    {
+        while (ft_menor_i_pilha(a, count_pilha(a)) != 1 && check_pilha(a, count_pilha(a)) == 0)
+        {
+            if (ft_menor_i_pilha(a, count_pilha(a)) <= divi(count_pilha(a)) / 2)
+                temp = rotate_o(a);
+            else
+                temp = reverse_rotate_o(a);
+            saida = concatena_strings(saida, temp);
+        }
+        if (check_pilha(a, count_pilha(a)) != 1)
+        {
+        	temp = push_o(b, a);
+        	saida = concatena_strings(saida, temp);
+        }
+    }
+    return (saida);
+}
+
+
+char	*ordenar_n(t_pilha *a, int len)
+{
+	char	*saida;
+	char	*nova_saida;
+	char	*temp;
+	t_pilha	*b;
+
+	(void) *nova_saida;
+	(void) *temp;
+	b = criar_pilha("b ");
+	if (!b)
+		return (NULL);
+	saida = deixar_3(a, b, len);
+	if (!saida)
+	{
+		b = apagar_pilha(b);	
+		return (NULL);
+	}
+	temp = ordenar_3(a, 3);
+	saida = concatena_strings(saida, temp);
+	while (count_pilha(b) > 0)
+	{
+		temp = push_o(a, b);
+		saida = concatena_strings(saida, temp);
+	}
+	b = apagar_pilha(b);
 	return (saida);
 }

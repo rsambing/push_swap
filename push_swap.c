@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsambing <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rsambing <rsambing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 09:48:58 by rsambing          #+#    #+#             */
-/*   Updated: 2024/07/13 09:49:01 by rsambing         ###   ########.fr       */
+/*   Updated: 2024/07/27 14:28:03 by rsambing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ static int	*antes_da_pilha(int ac, char **av, int *len)
 	return (numbers);
 }
 
+static void saida_final(t_pilha *a, char *saida)
+{
+	(void) saida;
+	(void) a;
+	//ft_printf("-------------\n%s\n", saida);
+	//imprimir_pilha(a);
+}
+
+
 int	main(int ac, char **av)
 {
 	char	*saida;
@@ -37,7 +46,7 @@ int	main(int ac, char **av)
 
 	i = -1;
 	numbers = antes_da_pilha(ac, av, &len);
-	a = criar_pilha("a");
+	a = criar_pilha("a ");
 	if (!a)
 	{
 		free(numbers);
@@ -45,8 +54,8 @@ int	main(int ac, char **av)
 	}
 	while (++i < len)
 		push(a, numbers[i]);
-	ft_printf("");
-	saida = ordernar(a, len);
+	saida = ordenar(a, len);
+	saida_final(a, saida);
 	a = apagar_pilha(a);
 	if (saida)
 		free(saida);
