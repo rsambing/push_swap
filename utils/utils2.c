@@ -45,36 +45,36 @@ int	count_pilha(t_pilha *p)
 	}
 	return (i);
 }
-static void liberar_concat(char *saida, char *temp)
+static void	liberar_concat(char *saida, char *temp)
 {
 	free(saida);
-    free(temp);
+	free(temp);
 }
 
 char	*concatena_strings(char *saida, char *temp)
 {
-    char *nova_saida;
-    size_t tamanho_saida;
-    size_t tamanho_temp;
+	char *nova_saida;
+	size_t tamanho_saida;
+	size_t tamanho_temp;
 
-    tamanho_saida = saida ? ft_strlen(saida) : 0;
-    tamanho_temp = temp ? ft_strlen(temp) : 0;
-    if (!saida)
-    {
-        nova_saida = ft_strdup(temp);
-        if (!nova_saida)
-            return (NULL);
-        free(temp);
-        return (nova_saida);
-    }
-    nova_saida = malloc(tamanho_saida + tamanho_temp + 1);
-    if (nova_saida == NULL)
-    {
-        liberar_concat(saida, temp);
-        return (NULL);
-    }
-    ft_strlcpy(nova_saida, saida, tamanho_saida + 1);
-    ft_strlcat(nova_saida, temp, tamanho_saida + tamanho_temp + 1);
-    liberar_concat(saida, temp);
-    return (nova_saida);
+	tamanho_saida = saida ? ft_strlen(saida) : 0;
+	tamanho_temp = temp ? ft_strlen(temp) : 0;
+	if (!saida)
+	{
+		nova_saida = ft_strdup(temp);
+		if (!nova_saida)
+			return (NULL);
+		free(temp);
+		return (nova_saida);
+	}
+	nova_saida = malloc(tamanho_saida + tamanho_temp + 1);
+	if (nova_saida == NULL)
+	{
+		liberar_concat(saida, temp);
+		return (NULL);
+	}
+	ft_strlcpy(nova_saida, saida, tamanho_saida + 1);
+	ft_strlcat(nova_saida, temp, tamanho_saida + tamanho_temp + 1);
+	liberar_concat(saida, temp);
+	return (nova_saida);
 }

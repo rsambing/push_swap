@@ -40,33 +40,33 @@ char	*ordenar_3(t_pilha *p, int len)
 	return (saida);
 }
 
-static char *deixar_3(t_pilha *a, t_pilha *b, int len)
+static char	*deixar_3(t_pilha *a, t_pilha *b, int len)
 {
-    char *saida;
-    char *temp;
+	char	*saida;
+	char	*temp;
 
-    (void)len;
-    saida = NULL;
-    temp = NULL;
-    while (count_pilha(a) != 3)
-    {
-        while (ft_menor_i_pilha(a, count_pilha(a)) != 1 && check_pilha(a, count_pilha(a)) == 0)
-        {
-            if (ft_menor_i_pilha(a, count_pilha(a)) <= divi(count_pilha(a)) / 2)
-                temp = rotate_o(a);
-            else
-                temp = reverse_rotate_o(a);
-            saida = concatena_strings(saida, temp);
-        }
-        if (check_pilha(a, count_pilha(a)) != 1)
-        {
-        	temp = push_o(b, a);
-        	saida = concatena_strings(saida, temp);
-        }
-    }
-    return (saida);
+	(void)len;
+	saida = NULL;
+	temp = NULL;
+	while (count_pilha(a) != 3)
+	{
+		while (ft_menor_i_pilha(a, count_pilha(a)) != 1 && check_pilha(a,
+				count_pilha(a)) == 0)
+		{
+			if (ft_menor_i_pilha(a, count_pilha(a)) <= divi(count_pilha(a)) / 2)
+				temp = rotate_o(a);
+			else
+				temp = reverse_rotate_o(a);
+			saida = concatena_strings(saida, temp);
+		}
+		if (check_pilha(a, count_pilha(a)) != 1)
+		{
+			temp = push_o(b, a);
+			saida = concatena_strings(saida, temp);
+		}
+	}
+	return (saida);
 }
-
 
 char	*ordenar_n(t_pilha *a, int len)
 {
@@ -75,15 +75,15 @@ char	*ordenar_n(t_pilha *a, int len)
 	char	*temp;
 	t_pilha	*b;
 
-	(void) *nova_saida;
-	(void) *temp;
+	(void)*nova_saida;
+	(void)*temp;
 	b = criar_pilha("b ");
 	if (!b)
 		return (NULL);
 	saida = deixar_3(a, b, len);
 	if (!saida)
 	{
-		b = apagar_pilha(b);	
+		b = apagar_pilha(b);
 		return (NULL);
 	}
 	temp = ordenar_3(a, 3);

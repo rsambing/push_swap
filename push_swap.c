@@ -27,14 +27,13 @@ static int	*antes_da_pilha(int ac, char **av, int *len)
 	return (numbers);
 }
 
-static void saida_final(t_pilha *a, char *saida)
+static void	saida_final(t_pilha *a, char *saida)
 {
-	(void) saida;
-	(void) a;
-	//ft_printf("-------------\n%s\n", saida);
-	//imprimir_pilha(a);
+	(void)saida;
+	(void)a;
+	// ft_printf("-------------\n%s\n", saida);
+	// imprimir_pilha(a);
 }
-
 
 int	main(int ac, char **av)
 {
