@@ -23,7 +23,7 @@ char	*swap_o(t_pilha *p)
 	op = NULL;
 	temp_op = NULL;
 	if (!p || !p->topo || !p->topo->ant)
-        return NULL;
+		return (NULL);
 	op = ft_strdup("s");
 	if (!op)
 		return (NULL);
@@ -46,7 +46,7 @@ char	*push_o(t_pilha *a, t_pilha *b)
 	char	*temp_op;
 
 	if (!a || !b || !b->topo)
-        return NULL;
+		return (NULL);
 	op = ft_strdup("p");
 	if (!op)
 		return (NULL);
@@ -98,7 +98,7 @@ char	*reverse_rotate_o(t_pilha *p)
 	t_lista	*aux2;
 
 	if (!p || !p->topo || !p->topo->ant)
-    	return NULL;
+		return (NULL);
 	op = ft_strdup("rr");
 	if (!op)
 		return (NULL);

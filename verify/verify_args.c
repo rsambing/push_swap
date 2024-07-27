@@ -28,7 +28,7 @@ int	check_numbers(int *numbers, int len)
 	i = -1;
 	verif = 1;
 	if (len == 1)
-    	return (-1);
+		return (-1);
 	while (++i < len - 1)
 	{
 		if (numbers[i] < numbers[i + 1])
@@ -37,10 +37,10 @@ int	check_numbers(int *numbers, int len)
 		while (++j < len)
 		{
 			if (numbers[i] == numbers[j] && i != j)
-            	return (-1);
+				return (-1);
 		}
 	}
 	if (verif != 0)
-   		liberar(numbers);
+		liberar(numbers);
 	return (1);
 }

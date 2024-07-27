@@ -25,7 +25,7 @@ t_pilha	*criar_pilha(char *id)
 	if (!p)
 	{
 		free(p);
-		return NULL;
+		return (NULL);
 	}
 	return (p);
 }
@@ -51,7 +51,7 @@ int	pop(t_pilha **p)
 	t_lista	*aux;
 
 	if (!p || !*p || !(*p)->topo)
-    	return -1;
+		return (-1);
 	aux = (*p)->topo;
 	(*p)->topo = aux->ant;
 	n = aux->valor;

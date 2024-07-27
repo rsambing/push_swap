@@ -102,28 +102,30 @@ int	ft_i_pilha(t_pilha *p, int n)
 	return (-1);
 }
 
-char *ordernar(t_pilha *p, int len)
+char	*ordernar(t_pilha *p, int len)
 {
-    char *saida = NULL;
-    char *temp = NULL;
+	char	*saida;
+	char	*temp;
 
-    if (len == 2)
-    {
-        temp = swap_o(p);
-        if (temp)
-        {
-            saida = ft_strdup(temp);
-            free(temp);
-        }
-    }
-    else if (len == 3)
-    {
-        temp = ordernar_3(p, 3);
-        if (temp)
-        {
-            saida = ft_strdup(temp);
-            free(temp);
-        }
-    }
-    return saida;
+	saida = NULL;
+	temp = NULL;
+	if (len == 2)
+	{
+		temp = swap_o(p);
+		if (temp)
+		{
+			saida = ft_strdup(temp);
+			free(temp);
+		}
+	}
+	else if (len == 3)
+	{
+		temp = ordernar_3(p, 3);
+		if (temp)
+		{
+			saida = ft_strdup(temp);
+			free(temp);
+		}
+	}
+	return (saida);
 }
