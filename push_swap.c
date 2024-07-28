@@ -45,7 +45,7 @@ int	main(int ac, char **av)
 
 	i = -1;
 	numbers = antes_da_pilha(ac, av, &len);
-	a = criar_pilha("a ");
+	a = criar_pilha("a");
 	if (!a)
 	{
 		free(numbers);

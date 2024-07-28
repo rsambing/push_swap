@@ -40,6 +40,10 @@ int					ft_maior_i_pilha(t_pilha *p, int len);
 int					ft_i_pilha(t_pilha *p, int n);
 int					count_pilha(t_pilha *p);
 int					divi(int n);
+int					find_target(int n, t_pilha *b);
+int					ft_menor_n_pilha(t_pilha *p, int len);
+int					ft_maior_n_pilha(t_pilha *p, int len);
+int					find_cheapest(t_pilha *a, t_pilha *b);
 
 char				*swap_o(t_pilha *p);
 char				*push_o(t_pilha *a, t_pilha *b);
@@ -49,6 +53,7 @@ char				*ordenar(t_pilha *p, int len);
 char				*ordenar_3(t_pilha *p, int len);
 char				*ordenar_n(t_pilha *a, int len);
 char				*concatena_strings(char *saida, char *temp);
+char    			*ordenar_mestre(t_pilha *a);
 
 t_pilha				*criar_pilha(char *c);
 t_pilha				*apagar_pilha(t_pilha *p);

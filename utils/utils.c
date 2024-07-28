@@ -84,35 +84,56 @@ int	ft_i_pilha(t_pilha *p, int n)
 	return (-1);
 }
 
-int	count_pilha(t_pilha *p)
+int	ft_menor_n_pilha(t_pilha *p, int len)
 {
 	int		i;
-	t_lista	*aux;
-
-	i = 0;
-	aux = p->topo;
-	while (aux != NULL)
-	{
-		i++;
-		aux = aux->ant;
-	}
-	return (i);
-}
-
-int	check_pilha(t_pilha *p, int len)
-{
-	int		i;
+	int		menor;
+	int		menori;
 	t_lista	*aux;
 
 	if (!p)
-		return (0);
+		return (-1);
 	aux = p->topo;
-	i = -1;
-	while (++i < len - 1)
+	menor = aux->valor;
+	aux = aux->ant;
+	i = 1;
+	menori = i;
+	while (++i <= len)
 	{
-		if (aux->valor > aux->ant->valor)
-			return (0);
+		if (menor > aux->valor)
+		{
+			menori = i;
+			menor = aux->valor;
+		}
 		aux = aux->ant;
 	}
-	return (1);
+	(void)menori;
+	return (menor);
+}
+
+int	ft_maior_n_pilha(t_pilha *p, int len)
+{
+	int		i;
+	int		maior;
+	int		maiori;
+	t_lista	*aux;
+
+	if (!p)
+		return (-1);
+	aux = p->topo;
+	maior = aux->valor;
+	aux = aux->ant;
+	i = 1;
+	maiori = i;
+	while (++i <= len)
+	{
+		if (maior < aux->valor)
+		{
+			maiori = i;
+			maior = aux->valor;
+		}
+		aux = aux->ant;
+	}
+	(void)maiori;
+	return (maior);
 }

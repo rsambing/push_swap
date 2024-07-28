@@ -13,6 +13,39 @@
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
+int	check_pilha(t_pilha *p, int len)
+{
+	int		i;
+	t_lista	*aux;
+
+	if (!p)
+		return (0);
+	aux = p->topo;
+	i = -1;
+	while (++i < len - 1)
+	{
+		if (aux->valor > aux->ant->valor)
+			return (0);
+		aux = aux->ant;
+	}
+	return (1);
+}
+
+int	count_pilha(t_pilha *p)
+{
+	int		i;
+	t_lista	*aux;
+
+	i = 0;
+	aux = p->topo;
+	while (aux != NULL)
+	{
+		i++;
+		aux = aux->ant;
+	}
+	return (i);
+}
+
 char	*ordenar(t_pilha *p, int len)
 {
 	char	*saida;
@@ -22,8 +55,10 @@ char	*ordenar(t_pilha *p, int len)
 		saida = swap_o(p);
 	else if (len == 3)
 		saida = ordenar_3(p, 3);
-	else if (len > 3 && len < 13)
+	else if (len > 3 && len < 6)
 		saida = ordenar_n(p, len);
+	else
+		saida = ordenar_mestre(p);
 	if (!saida)
 		return (NULL);
 	return (saida);

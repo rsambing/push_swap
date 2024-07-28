@@ -77,7 +77,7 @@ char	*ordenar_n(t_pilha *a, int len)
 
 	(void)*nova_saida;
 	(void)*temp;
-	b = criar_pilha("b ");
+	b = criar_pilha("b");
 	if (!b)
 		return (NULL);
 	saida = deixar_3(a, b, len);
