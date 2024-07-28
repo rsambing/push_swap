@@ -1,33 +1,32 @@
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
-static char	*deixar_3(t_pilha *a, t_pilha *b)
+static char	*deixar_3(t_pilha *a, t_pilha *b, char *saida, int cheapest, int target)
 {
-	char	*saida;
 	char	*temp;
-
-	saida = NULL;
-	temp = NULL;
-	while (count_pilha(a) != 3 && check_pilha(a, count_pilha(a)) != 1)
-	{
-		while (ft_i_pilha(a, find_cheapest(a, b)) != 1 && ft_i_pilha(b, find_target(find_cheapest(a, b), b)) != 1)
+    
+    while (count_pilha(a) > 3)
+    {
+		while (!(ft_i_pilha(a, cheapest) == 1 && ft_i_pilha(b, target) == 1))
 		{
-			if (ft_i_pilha(a, find_cheapest(a, b)) != 1 && (ft_i_pilha(a, find_cheapest(a, b)) <= divi(count_pilha(a)) / 2)  && check_pilha(a, count_pilha(a)) != 1)
+            temp = NULL;
+			if (ft_i_pilha(a, cheapest) <= (divi(count_pilha(a)) / 2) && ft_i_pilha(a, cheapest) != 1)
 				temp = rotate_o(a);
-			else if (ft_i_pilha(a, find_cheapest(a, b)) != 1 && check_pilha(a, count_pilha(a)) != 1)
+			else if (ft_i_pilha(a, cheapest) != 1)
 				temp = reverse_rotate_o(a);
-			saida = concatena_strings(saida, temp);
-            if (ft_i_pilha(b, find_target(find_cheapest(a, b), b)) != 1 && (ft_i_pilha(b, find_target(find_cheapest(a, b), b)) <= divi(count_pilha(a)) / 2))
+			if (temp)
+                saida = concatena_strings(saida, temp);
+            if (ft_i_pilha(b, target) <= (divi(count_pilha(b)) / 2) && ft_i_pilha(b, target) != 1)
 				temp = rotate_o(b);
-			else if (ft_i_pilha(b, find_target(find_cheapest(a, b), b)) != 1 && check_pilha(a, count_pilha(a)) != 1)
+			else if (ft_i_pilha(b, target) != 1)
 				temp = reverse_rotate_o(b);
-			saida = concatena_strings(saida, temp);
+            if (temp)
+		        saida = concatena_strings(saida, temp);
+            cheapest = find_cheapest(a, b);
+            target = find_target(cheapest, b);
 		}
-        if (check_pilha(a, count_pilha(a)) != 1)
-		{
 			temp = push_o(b, a);
 			saida = concatena_strings(saida, temp);	
-    	}
     }
 	return (saida);
 }
@@ -52,12 +51,15 @@ char    *ordenar_mestre(t_pilha *a)
         if (!saida)
             return (NULL);
     }
-    temp = deixar_3(a, b);
+    temp = deixar_3(a, b, NULL, find_cheapest(a, b), find_target(find_cheapest(a, b), b));
     saida = concatena_strings(saida, temp);
+    temp = ordenar_3(a, 3);
+    saida = concatena_strings(saida, temp);
+    ft_printf("***************\n");
     imprimir_pilha(a);
-    ft_printf("--------------\n");
+    ft_printf("-------pilha a-------\n");
     imprimir_pilha(b);
-    ft_printf("--------------\n");
+    ft_printf("-------pilha b-------\n");
     b = apagar_pilha(b);
     return (saida);
 }
