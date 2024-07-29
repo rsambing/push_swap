@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calculos_de_mestre.c                               :+:      :+:    :+:   */
+/*   calculos_de_mestre2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsambing <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rsambing <rsambing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 08:26:37 by rsambing          #+#    #+#             */
-/*   Updated: 2024/07/29 08:26:40 by rsambing         ###   ########.fr       */
+/*   Created: 2024/07/29 10:01:48 by rsambing          #+#    #+#             */
+/*   Updated: 2024/07/29 10:06:01 by rsambing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../libft/libft.h"
 #include "../push_swap.h"
@@ -22,13 +23,13 @@ static int existe_mm(int n, t_pilha *b)
     aux = b->topo;
     while (aux != NULL)
     {
-        if (aux->valor < n)
+        if (aux->valor > n)
            return (1);
         aux = aux->ant;
     }
     return (-2);
 }
-int find_target(int n, t_pilha *b)
+int find_target2(int n, t_pilha *b)
 {
     t_lista *aux;
     int mm;
@@ -38,18 +39,18 @@ int find_target(int n, t_pilha *b)
     if (existe_mm(n, b) == -1)
         return (-1);
     else if (existe_mm(n, b) == -2)
-        return (ft_maior_n_pilha(b, count_pilha(b)));
+        return (ft_menor_n_pilha(b, count_pilha(b)));
     aux = b->topo;
     while(aux != NULL)
     {
-        if (aux->valor < n)
+        if (aux->valor > n)
             mm = aux->valor;
         aux = aux->ant;
     }
     aux = b->topo;
     while (aux != NULL)
     {
-        if (aux->valor > mm && aux->valor < n)
+        if (aux->valor < mm && aux->valor > n)
             mm = aux->valor;
         aux = aux->ant;
     }
@@ -68,7 +69,7 @@ static int  calcular_dis_topo(int n, t_pilha *p)
 		return (count_pilha(p) - ft_i_pilha(p, n) + 1);
 }
 
-int find_cheapest(t_pilha *a, t_pilha *b)
+int find_cheapest2(t_pilha *a, t_pilha *b)
 {
     int custo;
     int target;
@@ -79,12 +80,12 @@ int find_cheapest(t_pilha *a, t_pilha *b)
     if (!a || !b)
         return (-1);
     aux_a = a->topo;
-    target = find_target(aux_a->valor,b);
+    target = find_target2(aux_a->valor,b);
     min = calcular_dis_topo(aux_a->valor, a) + calcular_dis_topo(target, b);
     cheapest = aux_a->valor;
     while (aux_a != NULL)
     {
-        target = find_target(aux_a->valor,b);
+        target = find_target2(aux_a->valor,b);
         custo = calcular_dis_topo(aux_a->valor, a) + calcular_dis_topo(target, b);
         if (custo <= min)
             cheapest = aux_a->valor;

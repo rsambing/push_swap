@@ -6,7 +6,7 @@
 /*   By: rsambing <rsambing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 09:49:05 by rsambing          #+#    #+#             */
-/*   Updated: 2024/07/27 14:10:05 by rsambing         ###   ########.fr       */
+/*   Updated: 2024/07/29 10:05:52 by rsambing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ typedef struct pilha
 	char			*id;
 }					t_pilha;
 
+typedef struct targets
+{
+	int	cheapest;
+	int	target;
+} t_targets;
 int					verify_input(int ac, char **av);
 int					*give_me_the_numbers(int ac, char **av, int *len);
 int					check_numbers(int *numbers, int len);
@@ -44,6 +49,9 @@ int					find_target(int n, t_pilha *b);
 int					ft_menor_n_pilha(t_pilha *p, int len);
 int					ft_maior_n_pilha(t_pilha *p, int len);
 int					find_cheapest(t_pilha *a, t_pilha *b);
+int					only_one_number(const char *str);
+int					find_target2(int n, t_pilha *b);
+int					find_cheapest2(t_pilha *a, t_pilha *b);
 
 char				*swap_o(t_pilha *p);
 char				*push_o(t_pilha *a, t_pilha *b);

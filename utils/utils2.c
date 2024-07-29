@@ -6,12 +6,25 @@
 /*   By: rsambing <rsambing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 14:04:06 by rsambing          #+#    #+#             */
-/*   Updated: 2024/07/27 14:58:55 by rsambing         ###   ########.fr       */
+/*   Updated: 2024/07/29 09:39:09 by rsambing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../push_swap.h"
+
+int	only_one_number(const char *str) {
+    if (*str == '\0') {
+        return 0;
+    }
+    while (*str) {
+        if (!ft_isdigit(*str)) {
+            return 0;
+        }
+        str++;
+    }
+    return 1;
+}
 
 static void	liberar_concat(char *saida, char *temp)
 {
