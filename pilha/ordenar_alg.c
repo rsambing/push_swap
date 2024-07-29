@@ -6,7 +6,7 @@
 /*   By: rsambing <rsambing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 08:27:04 by rsambing          #+#    #+#             */
-/*   Updated: 2024/07/27 14:18:40 by rsambing         ###   ########.fr       */
+/*   Updated: 2024/07/29 12:43:58 by rsambing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	*ordenar_n(t_pilha *a, int len)
 
 	(void)*nova_saida;
 	(void)*temp;
-	b = criar_pilha("b");
+	b = criar_pilha("b ");
 	if (!b)
 		return (NULL);
 	saida = deixar_3(a, b, len);

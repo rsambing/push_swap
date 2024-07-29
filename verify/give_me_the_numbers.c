@@ -6,7 +6,7 @@
 /*   By: rsambing <rsambing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 09:23:23 by rsambing          #+#    #+#             */
-/*   Updated: 2024/07/29 09:41:19 by rsambing         ###   ########.fr       */
+/*   Updated: 2024/07/29 13:03:09 by rsambing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	count_elements(char **nums_string)
 	return (len);
 }
 
-static void	free_all_s(char **strings)
+void	free_all_s(char **strings)
 {
 	int	i;
 

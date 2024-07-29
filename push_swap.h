@@ -6,7 +6,7 @@
 /*   By: rsambing <rsambing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 09:49:05 by rsambing          #+#    #+#             */
-/*   Updated: 2024/07/29 10:05:52 by rsambing         ###   ########.fr       */
+/*   Updated: 2024/07/29 13:03:26 by rsambing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ char				*ordenar_3(t_pilha *p, int len);
 char				*ordenar_n(t_pilha *a, int len);
 char				*concatena_strings(char *saida, char *temp);
 char    			*ordenar_mestre(t_pilha *a);
+char				*check_final(t_pilha *p);
+
+void				free_all_s(char **strings);
 
 t_pilha				*criar_pilha(char *c);
 t_pilha				*apagar_pilha(t_pilha *p);

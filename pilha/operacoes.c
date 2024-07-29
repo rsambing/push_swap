@@ -6,7 +6,7 @@
 /*   By: rsambing <rsambing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 08:01:12 by rsambing          #+#    #+#             */
-/*   Updated: 2024/07/27 13:29:59 by rsambing         ###   ########.fr       */
+/*   Updated: 2024/07/29 12:43:11 by rsambing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ char	*swap_o(t_pilha *p)
 	op = temp_op;
 	if (!op)
 		return (NULL);
-	ft_printf("%s\n", op);
 	aux = p->topo;
 	temp = aux->valor;
 	aux->valor = aux->ant->valor;
@@ -55,7 +54,6 @@ char	*push_o(t_pilha *a, t_pilha *b)
 	op = temp_op;
 	if (!op)
 		return (NULL);
-	ft_printf("%s\n", op);
 	push(a, b->topo->valor);
 	pop(&b);
 	return (op);
@@ -78,7 +76,6 @@ char	*rotate_o(t_pilha *p)
 	op = temp_op;
 	if (!op)
 		return (NULL);
-	ft_printf("%s\n", op);
 	aux = p->topo;
 	temp = aux->valor;
 	while (aux->ant != NULL)
@@ -107,7 +104,6 @@ char	*reverse_rotate_o(t_pilha *p)
 	op = temp_op;
 	if (!op)
 		return (NULL);
-	ft_printf("%s\n", op);
 	aux = p->topo;
 	while (aux->ant->ant != NULL)
 		aux = aux->ant;

@@ -6,7 +6,7 @@
 /*   By: rsambing <rsambing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 09:48:58 by rsambing          #+#    #+#             */
-/*   Updated: 2024/07/27 15:00:05 by rsambing         ###   ########.fr       */
+/*   Updated: 2024/07/29 13:07:40 by rsambing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,28 @@ static int	*antes_da_pilha(int ac, char **av, int *len)
 
 static void	saida_final(t_pilha *a, char *saida)
 {
-	(void)saida;
 	(void)a;
-	// ft_printf("-------------\n%s\n", saida);
-	// imprimir_pilha(a);
+	char	**sf;
+	int	i;
+
+	i = -1;
+	sf = ft_split(saida, ' ');
+	while (sf[++i])
+	{
+		if (sf[i + 1] && ((ft_strncmp(sf[i], "ra", ft_strlen(sf[i])) == 0 && ft_strncmp(sf[i + 1], "rb", ft_strlen(sf[i])) == 0) || (ft_strncmp(sf[i], "rb", ft_strlen(sf[i])) == 0 && ft_strncmp(sf[i + 1], "ra", ft_strlen(sf[i])) == 0)))
+		{	
+			i++;
+			ft_printf("rr\n");
+		}
+		else if (sf[i + 1] && ((ft_strncmp(sf[i], "rra", ft_strlen(sf[i])) == 0 && ft_strncmp(sf[i + 1], "rrb", ft_strlen(sf[i])) == 0) || (ft_strncmp(sf[i], "rrb", ft_strlen(sf[i])) == 0 && ft_strncmp(sf[i + 1], "rra", ft_strlen(sf[i])) == 0)))
+		{	
+			i++;
+			ft_printf("rrr\n");
+		}
+		else
+			ft_printf("%s\n",sf[i]);
+	}
+	free_all_s(sf);
 }
 
 int	main(int ac, char **av)
@@ -45,7 +63,7 @@ int	main(int ac, char **av)
 
 	i = -1;
 	numbers = antes_da_pilha(ac, av, &len);
-	a = criar_pilha("a");
+	a = criar_pilha("a ");
 	if (!a)
 	{
 		free(numbers);

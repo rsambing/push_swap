@@ -6,7 +6,7 @@
 /*   By: rsambing <rsambing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 14:04:06 by rsambing          #+#    #+#             */
-/*   Updated: 2024/07/29 09:39:09 by rsambing         ###   ########.fr       */
+/*   Updated: 2024/07/29 12:34:11 by rsambing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,22 @@ char	*concatena_strings(char *saida, char *temp)
 	ft_strlcat(nova_saida, temp, tamanho_saida + tamanho_temp + 1);
 	liberar_concat(saida, temp);
 	return (nova_saida);
+}
+
+char	*check_final(t_pilha *p)
+{
+    char    *temp;
+    char    *saida;
+
+    saida = NULL;
+    while (check_pilha(p, count_pilha(p)) != 1)
+    {
+        temp = NULL;    
+       if (ft_menor_i_pilha(p, count_pilha(p)) <= divi(count_pilha(p)) / 2)
+            temp = rotate_o(p);
+        else
+            temp = reverse_rotate_o(p);
+        saida = concatena_strings(saida, temp);
+    }
+    return (saida);
 }
