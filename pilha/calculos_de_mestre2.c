@@ -57,39 +57,26 @@ int find_target2(int n, t_pilha *b)
     return (mm);
 }
 
-static int  calcular_dis_topo(int n, t_pilha *p)
-{
-    if (!p || !p->topo)
-        return (-1);
-    if (ft_i_pilha(p, n) == 1)
-        return (0);
-    if (ft_i_pilha(p, n) <= divi(count_pilha(p)) / 2)
-		return (ft_i_pilha(p, n) - 1);
-	else
-		return (count_pilha(p) - ft_i_pilha(p, n) + 1);
-}
-
 int find_cheapest2(t_pilha *a, t_pilha *b)
 {
     int custo;
-    int target;
-    int cheapest;
     int min;
+    t_targets t;
     t_lista *aux_a;
     
     if (!a || !b)
         return (-1);
     aux_a = a->topo;
-    target = find_target2(aux_a->valor,b);
-    min = calcular_dis_topo(aux_a->valor, a) + calcular_dis_topo(target, b);
-    cheapest = aux_a->valor;
+    t.target = find_target2(aux_a->valor,b);
+    t.cheapest = aux_a->valor;
+    min = cal_custo(a, b, aux_a->valor, t.target);
     while (aux_a != NULL)
     {
-        target = find_target2(aux_a->valor,b);
-        custo = calcular_dis_topo(aux_a->valor, a) + calcular_dis_topo(target, b);
-        if (custo <= min)
-            cheapest = aux_a->valor;
+        t.target = find_target2(aux_a->valor,b);
+        custo = cal_custo(a, b, aux_a->valor, t.target);
+        if (custo < min)
+            t.cheapest = aux_a->valor;
         aux_a = aux_a->ant;
     }
-    return (cheapest);
+    return (t.cheapest);
 }

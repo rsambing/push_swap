@@ -73,21 +73,3 @@ char	*concatena_strings(char *saida, char *temp)
 	liberar_concat(saida, temp);
 	return (nova_saida);
 }
-
-char	*check_final(t_pilha *p)
-{
-    char    *temp;
-    char    *saida;
-
-    saida = NULL;
-    while (check_pilha(p, count_pilha(p)) != 1)
-    {
-        temp = NULL;    
-       if (ft_menor_i_pilha(p, count_pilha(p)) <= divi(count_pilha(p)) / 2)
-            temp = rotate_o(p);
-        else
-            temp = reverse_rotate_o(p);
-        saida = concatena_strings(saida, temp);
-    }
-    return (saida);
-}

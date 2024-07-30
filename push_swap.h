@@ -52,6 +52,11 @@ int					find_cheapest(t_pilha *a, t_pilha *b);
 int					only_one_number(const char *str);
 int					find_target2(int n, t_pilha *b);
 int					find_cheapest2(t_pilha *a, t_pilha *b);
+int					torb(t_pilha *a, int value);
+int					is_first(t_pilha *p, int value);
+int 				cal_custo(t_pilha *a, t_pilha *b, int v1, int v2);
+int					MAIOR(int n1, int n2);
+int					dis_topo(int n, t_pilha *p);
 
 char				*swap_o(t_pilha *p);
 char				*push_o(t_pilha *a, t_pilha *b);
