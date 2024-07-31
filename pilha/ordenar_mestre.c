@@ -21,18 +21,17 @@ static char	*deixar_3(t_pilha *a, t_pilha *b, char *saida, t_targets t)
 	{
 		t.cheapest = find_cheapest(a, b);
 		t.target = find_target(t.cheapest, b);
-		while (!(is_first(a, t.cheapest) && is_first(b, t.target)))
+		while (!(first(a, t.cheapest) && first(b, t.target)))
 		{
-			if ((temp = NULL) || (torb(a, t.cheapest) && !is_first(a,
-						t.cheapest)))
+			if ((temp = NULL) || (torb(a, t.cheapest) && !first(a,t.cheapest)))
 				temp = rotate_o(a);
-			else if (!is_first(a, t.cheapest))
+			else if (!first(a, t.cheapest))
 				temp = reverse_rotate_o(a);
 			if (temp)
 				saida = concatena_strings(saida, temp);
-			if ((temp = NULL) || (torb(b, t.target) && !is_first(b, t.target)))
+			if ((temp = NULL) || (torb(b, t.target) && !first(b, t.target)))
 				temp = rotate_o(b);
-			else if (!is_first(b, t.target))
+			else if (!first(b, t.target))
 				temp = reverse_rotate_o(b);
 			if (temp)
 				saida = concatena_strings(saida, temp);
@@ -50,11 +49,12 @@ static char	*voltar_tudo(t_pilha *a, t_pilha *b, char *saida, t_targets t)
 	while (count_pilha(b) > 0)
 	{
 		t.target = find_target2(b->topo->valor, a);
-		while (!is_first(a, t.target))
+		while (!first(a, t.target))
 		{
-			if ((temp = NULL) || (torb(a, t.target) && !is_first(a, t.target)))
+            temp = NULL;
+			if ((torb(a, t.target) && !first(a, t.target)))
 				temp = rotate_o(a);
-			else if (!is_first(a, t.cheapest))
+			else if (!first(a, t.cheapest))
 				temp = reverse_rotate_o(a);
 			if (temp)
 				saida = concatena_strings(saida, temp);

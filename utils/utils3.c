@@ -33,16 +33,16 @@ int	torb(t_pilha *p, int value)
 	return (0);
 }
 
-int	is_first(t_pilha *p, int value)
+int	first(t_pilha *p, int value)
 {
 	if (ft_i_pilha(p, value) == 1)
 		return (1);
 	return (0);
 }
 
-int	ft_abs(int n)
+int    n(char **temp)
 {
-	if (n < 0)
-		return (-n);
-	return (n);
+    temp = NULL;
+    (void) temp;
+    return (0);
 }
