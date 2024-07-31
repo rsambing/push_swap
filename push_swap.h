@@ -30,9 +30,9 @@ typedef struct pilha
 
 typedef struct targets
 {
-	int	cheapest;
-	int	target;
-} t_targets;
+	int				cheapest;
+	int				target;
+}					t_targets;
 int					verify_input(int ac, char **av);
 int					*give_me_the_numbers(int ac, char **av, int *len);
 int					check_numbers(int *numbers, int len);
@@ -54,7 +54,7 @@ int					find_target2(int n, t_pilha *b);
 int					find_cheapest2(t_pilha *a, t_pilha *b);
 int					torb(t_pilha *a, int value);
 int					is_first(t_pilha *p, int value);
-int 				cal_custo(t_pilha *a, t_pilha *b, int v1, int v2);
+int					cal_custo(t_pilha *a, t_pilha *b, int v1, int v2);
 int					MAIOR(int n1, int n2);
 int					dis_topo(int n, t_pilha *p);
 
@@ -66,7 +66,7 @@ char				*ordenar(t_pilha *p, int len);
 char				*ordenar_3(t_pilha *p, int len);
 char				*ordenar_n(t_pilha *a, int len);
 char				*concatena_strings(char *saida, char *temp);
-char    			*ordenar_mestre(t_pilha *a);
+char				*ordenar_mestre(t_pilha *a);
 char				*check_final(t_pilha *p);
 
 void				free_all_s(char **strings);

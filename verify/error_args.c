@@ -59,7 +59,7 @@ static int	verify2args(char *str)
 		dc = str[i + 1];
 		if (!(ft_isdigit(c) || ((c == '-' || c == '+') && ft_isdigit(dc)
 					&& (!(ac) || ft_is_valid_space(str, i - 1)))
-				|| ft_is_valid_space(str, i))) 
+				|| ft_is_valid_space(str, i)))
 			return (-1);
 		i++;
 	}
