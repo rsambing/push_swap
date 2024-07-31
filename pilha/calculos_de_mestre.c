@@ -66,39 +66,6 @@ int  dis_topo(int n, t_pilha *p)
 		return (count_pilha(p) - ft_i_pilha(p, n) + 1);
 }
 
-int cal_custo(t_pilha *a, t_pilha *b, int v1, int v2)
-{
-    int au, ad, bu, bd;
-    int custo1, custo2, custo3, custo4;
-
-    // Índices das posições dos valores v1 e v2 nas pilhas a e b
-    au = ft_i_pilha(a, v1) - 1;
-    bu = ft_i_pilha(b, v2) - 1;
-    ad = count_pilha(a) - ft_i_pilha(a, v1) + 1;
-    bd = count_pilha(b) - ft_i_pilha(b, v2) + 1;
-
-    // Caso 1: Mover ambos para cima simultaneamente
-    custo1 = (au > bu) ? au : bu;
-
-    // Caso 2: Mover ambos para baixo simultaneamente
-    custo2 = (ad > bd) ? ad : bd;
-
-    // Caso 3: Mover v1 para cima e v2 para baixo
-    custo3 = au + bd;
-
-    // Caso 4: Mover v1 para baixo e v2 para cima
-    custo4 = ad + bu;
-
-    // Retorna o menor custo entre os quatro casos
-    int custo_min = custo1;
-    if (custo2 < custo_min) custo_min = custo2;
-    if (custo3 < custo_min) custo_min = custo3;
-    if (custo4 < custo_min) custo_min = custo4;
-
-    return custo_min;
-}
-
-
 int find_cheapest(t_pilha *a, t_pilha *b)
 {
     int custo;
@@ -111,12 +78,11 @@ int find_cheapest(t_pilha *a, t_pilha *b)
     aux_a = a->topo;
     t.target = find_target(aux_a->valor,b);
     t.cheapest = aux_a->valor;
-    min = cal_custo(a, b, t.cheapest, t.target);
+    min = dis_topo(t.cheapest, a) + dis_topo(t.target, b);
     while (aux_a != NULL)
     {
         t.target = find_target(aux_a->valor,b);
-        custo = cal_custo(a, b, aux_a->valor, t.target);
-        ft_printf("valor atual:%d\ntarget:%d\ncusto:%d\n.\n", aux_a->valor, t.target, custo);
+        custo = dis_topo(aux_a->valor, a) + dis_topo(t.target, b);
         if (custo < min)
             t.cheapest = aux_a->valor;
         aux_a = aux_a->ant;

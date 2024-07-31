@@ -13,17 +13,17 @@
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
-int	only_one_number(const char *str) {
-    if (*str == '\0') {
-        return 0;
-    }
-    while (*str) {
-        if (!ft_isdigit(*str)) {
-            return 0;
-        }
-        str++;
-    }
-    return 1;
+int	only_one_number(const char *str)
+{
+	if (*str == '\0')
+		return (0);
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			return (0);
+		str++;
+	}
+	return (1);
 }
 
 static void	liberar_concat(char *saida, char *temp)

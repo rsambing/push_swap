@@ -1,17 +1,16 @@
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
-char	*check_final(t_pilha *p)
+char    *check_final(t_pilha *p)
 {
     char    *temp;
     char    *saida;
-
+    
     saida = NULL;
     while (check_pilha(p, count_pilha(p)) != 1)
     {
-        ft_printf("ola\n");
         temp = NULL;    
-       if (ft_menor_i_pilha(p, count_pilha(p)) <= divi(count_pilha(p)) / 2)
+        if (ft_menor_i_pilha(p, count_pilha(p)) <= (divi(count_pilha(p)) / 2))
             temp = rotate_o(p);
         else
             temp = reverse_rotate_o(p);
@@ -44,8 +43,6 @@ int is_first(t_pilha *p, int value)
 int ft_abs(int n)
 {
     if (n < 0)
-        return (n * -1);
+        return (-n);
     return (n);
 }
-
-

@@ -56,27 +56,3 @@ int find_target2(int n, t_pilha *b)
     }
     return (mm);
 }
-
-int find_cheapest2(t_pilha *a, t_pilha *b)
-{
-    int custo;
-    int min;
-    t_targets t;
-    t_lista *aux_a;
-    
-    if (!a || !b)
-        return (-1);
-    aux_a = a->topo;
-    t.target = find_target2(aux_a->valor,b);
-    t.cheapest = aux_a->valor;
-    min = cal_custo(a, b, aux_a->valor, t.target);
-    while (aux_a != NULL)
-    {
-        t.target = find_target2(aux_a->valor,b);
-        custo = cal_custo(a, b, aux_a->valor, t.target);
-        if (custo < min)
-            t.cheapest = aux_a->valor;
-        aux_a = aux_a->ant;
-    }
-    return (t.cheapest);
-}

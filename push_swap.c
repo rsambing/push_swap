@@ -27,6 +27,26 @@ static int	*antes_da_pilha(int ac, char **av, int *len)
 	return (numbers);
 }
 
+static int	rr(char **sf, int i)
+{
+	if (sf[i + 1] && ((ft_strncmp(sf[i], "ra", ft_strlen(sf[i])) == 0 
+		&& ft_strncmp(sf[i + 1], "rb", ft_strlen(sf[i])) == 0) || 
+			(ft_strncmp(sf[i], "rb", ft_strlen(sf[i])) == 0 && 
+				ft_strncmp(sf[i + 1], "ra", ft_strlen(sf[i])) == 0)))
+		return (1);
+	return (0);
+}
+
+static int	rrr(char **sf, int i)
+{
+	if (sf[i + 1] && ((ft_strncmp(sf[i], "rra", ft_strlen(sf[i])) == 0 
+		&& ft_strncmp(sf[i + 1], "rrb", ft_strlen(sf[i])) == 0) || 
+			(ft_strncmp(sf[i], "rrb", ft_strlen(sf[i])) == 0 && 
+				ft_strncmp(sf[i + 1], "rra", ft_strlen(sf[i])) == 0)))
+		return (1);
+	return (0);
+}
+
 static void	saida_final(t_pilha *a, char *saida)
 {
 	(void)a;
@@ -37,12 +57,12 @@ static void	saida_final(t_pilha *a, char *saida)
 	sf = ft_split(saida, ' ');
 	while (sf[++i])
 	{
-		if (sf[i + 1] && ((ft_strncmp(sf[i], "ra", ft_strlen(sf[i])) == 0 && ft_strncmp(sf[i + 1], "rb", ft_strlen(sf[i])) == 0) || (ft_strncmp(sf[i], "rb", ft_strlen(sf[i])) == 0 && ft_strncmp(sf[i + 1], "ra", ft_strlen(sf[i])) == 0)))
+		if (rr(sf, i))
 		{	
 			i++;
 			ft_printf("rr\n");
 		}
-		else if (sf[i + 1] && ((ft_strncmp(sf[i], "rra", ft_strlen(sf[i])) == 0 && ft_strncmp(sf[i + 1], "rrb", ft_strlen(sf[i])) == 0) || (ft_strncmp(sf[i], "rrb", ft_strlen(sf[i])) == 0 && ft_strncmp(sf[i + 1], "rra", ft_strlen(sf[i])) == 0)))
+		else if (rrr(sf, i))
 		{	
 			i++;
 			ft_printf("rrr\n");
