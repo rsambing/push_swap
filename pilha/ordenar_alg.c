@@ -6,7 +6,7 @@
 /*   By: rsambing <rsambing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 08:27:04 by rsambing          #+#    #+#             */
-/*   Updated: 2024/07/29 12:43:58 by rsambing         ###   ########.fr       */
+/*   Updated: 2024/08/08 15:31:12 by rsambing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ static char	*deixar_3(t_pilha *a, t_pilha *b, int len)
 	(void)len;
 	saida = NULL;
 	temp = NULL;
-	while (count_pilha(a) != 3)
+	while (count_pilha(a) != 3 && check_pilha(a, count_pilha(a)) != 1)
 	{
-		while (ft_menor_i_pilha(a, count_pilha(a)) != 1 && check_pilha(a,
-				count_pilha(a)) == 0)
+		while (ft_menor_i_pilha(a, count_pilha(a)) != 1 && check_pilha(a
+				, count_pilha(a)) == 0)
 		{
 			if (ft_menor_i_pilha(a, count_pilha(a)) <= divi(count_pilha(a)) / 2)
 				temp = rotate_o(a);
@@ -76,7 +76,6 @@ char	*ordenar_n(t_pilha *a, int len)
 	t_pilha	*b;
 
 	(void)*nova_saida;
-	(void)*temp;
 	b = criar_pilha("b ");
 	if (!b)
 		return (NULL);
@@ -87,7 +86,8 @@ char	*ordenar_n(t_pilha *a, int len)
 		return (NULL);
 	}
 	temp = ordenar_3(a, 3);
-	saida = concatena_strings(saida, temp);
+	if (temp)
+		saida = concatena_strings(saida, temp);
 	while (count_pilha(b) > 0)
 	{
 		temp = push_o(a, b);

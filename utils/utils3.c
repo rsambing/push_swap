@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils3.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rsambing <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/07 15:26:56 by rsambing          #+#    #+#             */
+/*   Updated: 2024/08/07 15:27:29 by rsambing         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
@@ -40,9 +52,9 @@ int	first(t_pilha *p, int value)
 	return (0);
 }
 
-int    n(char **temp)
+int	n(char **temp)
 {
-    temp = NULL;
-    (void) temp;
-    return (0);
+	temp = NULL;
+	(void) temp;
+	return (0);
 }

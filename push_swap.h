@@ -6,7 +6,7 @@
 /*   By: rsambing <rsambing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 09:49:05 by rsambing          #+#    #+#             */
-/*   Updated: 2024/07/29 13:03:26 by rsambing         ###   ########.fr       */
+/*   Updated: 2024/08/08 13:27:38 by rsambing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,25 @@
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
-typedef struct lista
+typedef struct s_lista
 {
 	int				valor;
-	struct lista	*ant;
-}					t_lista;
+	struct s_lista	*ant;
+}	t_lista;
 
-typedef struct pilha
+typedef struct s_pilha
 {
 	t_lista			*topo;
 	char			*id;
-}					t_pilha;
+}	t_pilha;
 
-typedef struct targets
+typedef struct s_targets
 {
 	int				cheapest;
 	int				target;
-}					t_targets;
+	char			*temp;
+}	t_targets;
+
 int					verify_input(int ac, char **av);
 int					*give_me_the_numbers(int ac, char **av, int *len);
 int					check_numbers(int *numbers, int len);
@@ -57,7 +59,7 @@ int					first(t_pilha *p, int value);
 int					cal_custo(t_pilha *a, t_pilha *b, int v1, int v2);
 int					MAIOR(int n1, int n2);
 int					dis_topo(int n, t_pilha *p);
-int    				n(char **temp);
+int					n(char **temp);
 
 char				*swap_o(t_pilha *p);
 char				*push_o(t_pilha *a, t_pilha *b);
@@ -69,6 +71,7 @@ char				*ordenar_n(t_pilha *a, int len);
 char				*concatena_strings(char *saida, char *temp);
 char				*ordenar_mestre(t_pilha *a);
 char				*check_final(t_pilha *p);
+char				*radix_sort(t_pilha *a, t_pilha *b, char *saida);
 
 void				free_all_s(char **strings);
 

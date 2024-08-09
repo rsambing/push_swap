@@ -20,10 +20,6 @@ ${NAME}:
 run:
 	@ ./${NAME}  
 
-bonus:
-	
-run_bonus:	
-
 clean:
 	@ rm -f *.o
 	@ make clean -s -C libft
@@ -36,4 +32,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
